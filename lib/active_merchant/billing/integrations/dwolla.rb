@@ -5,9 +5,12 @@ module ActiveMerchant #:nodoc:
   module Billing #:nodoc:
     module Integrations #:nodoc:
       module Dwolla 
+        autoload :Return, 'active_merchant/billing/integrations/dwolla/return.rb'
+        autoload :Helper, 'active_merchant/billing/integrations/dwolla/helper.rb'
+        autoload :Notification, 'active_merchant/billing/integrations/dwolla/notification.rb'
        
         mattr_accessor :service_url
-        self.service_url = 'https://www.example.com'
+        self.service_url = 'https://www.dwolla.com/payment/request'
 
         def self.notification(post)
           Notification.new(post)
