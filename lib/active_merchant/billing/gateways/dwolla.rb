@@ -45,6 +45,14 @@ module ActiveMerchant #:nodoc:
       # The type of moneys the gateway takes
       self.money_format = :dollars
 
+      def debug
+        self.params.inspect
+      end
+
+      def redirect_url_for
+        self.params["redirect_url"]
+      end
+
       def initialize(options = {})
         requires!(options, :public_key, :private_key)
         @options = options
