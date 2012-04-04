@@ -81,7 +81,9 @@ module ActiveMerchant #:nodoc:
         purchase_order[:discount] = options[:discount]
         purchase_order[:shipping] = options[:shipping]
         purchase_order[:tax] = options[:tax]
+        purchase_order[:facilitator_amount] = options[:facilitator_amount]
         purchase_order[:total] = total
+
 
         purchase_order = add_ordered_items(purchase_order, options)
 
