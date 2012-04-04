@@ -119,7 +119,8 @@ module ActiveMerchant #:nodoc:
       end
 
       def commit(post)
-        post[:test] = test? ? true : false
+        #post[:test] = test? ? true : false
+        puts "gem post data - #{post.inspect}"
         response = parse(ssl_post(LIVE_URL, post_data(post), {"Content-Type" => "application/json"}) )
 
         if response[:response] == "ERROR"
