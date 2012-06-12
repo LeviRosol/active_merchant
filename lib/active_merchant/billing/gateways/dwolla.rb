@@ -20,7 +20,7 @@ module ActiveMerchant #:nodoc:
           test_string = ""
           urls << %-"Callback":"#{self[:payment_callback]}",- unless self[:payment_callback].nil?
           urls << %-"Redirect":"#{self[:payment_redirect]}",- unless self[:payment_redirect].nil?
-          test_string << %-"Test":"false",- unless self[:test] == false
+          test_string << %-"Test":"true",- if self[:test] == true
 
           #Fording formatting of dollar amounts to decimals for Dwolla server.
           %-{"Key":"#{self[:key]}","Secret":"#{self[:secret]}",#{urls}#{test_string}"PurchaseOrder":{"DestinationId":"#{purchase_order[:destination_id]}","Discount": #{"%.2f" %  purchase_order[:discount]},"OrderItems":[#{items.join(',')}],"Shipping": #{"%.2f" % purchase_order[:shipping]},"Tax": #{"%.2f" % purchase_order[:tax]},"Total": #{"%.2f" % purchase_order[:total]},"FacilitatorAmount": #{"%.2f" % purchase_order[:facilitator_amount]}}}-
